@@ -28,7 +28,11 @@
 		<button v-on:click.prevent="typeSelected(2)">Text</text>
 	</div>
 
-	<component :is="currentAnswerType">
+	<div v-if="addQuestionBtn">
+		<button v-on:click.prevent="addAnswer">Add answer</button>
+	</div>
+
+	<component v-for="answer in answers" :is="currentAnswerType">
 	 
 	</component>
 
@@ -36,27 +40,36 @@
 
 <template id="quiz-answer-input">
 
-	<br><br>
+	<div class="answer-input">
 
-	<h2>Add text answer</h2>
+		<br>
 
-	<input type="text" />
+		<h2>Add text answer</h2>
 
-	<button>Sumbit</button>
-	<button>Add another</button>
+		<input type="text" v-model="textAnswerInput" />
+
+		<button v-on:click.prevent="submitTextQ">Submit</button>
+
+	</div>
 
 </template>
 
 <template id="quiz-answer-multi">
 
-	<br><br>
+	<div class="answer-input">
 
-	<h2>Add multi answer</h2>
+		<br>
 
-	<input type="text" />
+		<h2>Add multi answer</h2>
 
-	<button>Sumbit</button>
-	<button>Add another</button>
+		<input type="text" />
+
+		<label>Correct Answer</label>
+		<input type="checkbox" v-model="textAnswerCorrect" />
+
+		<button>Submit</button>
+
+	</div>
 
 </template>
 
