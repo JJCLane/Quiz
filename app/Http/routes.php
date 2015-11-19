@@ -19,9 +19,9 @@ Route::get('/quiz/create', function() {
 	return view('quiz.create');
 });
 
-Route::get('/quiz', function() {
-	return App\Quiz::with('questions.answers')->get();
-});
+Route::get('/quiz/{id}', array(
+	'uses' => 'QuizController@index'
+));
 
 Route::get('/question/create', function() {
 	return view('question.create');
