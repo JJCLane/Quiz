@@ -17,11 +17,13 @@ var AnswerText = Vue.extend({
 	props: ['quiz'],
 	data : function() {
 		return {
-			
+			textAnswerInput: ''
 		};
 	},
 	methods: {
-		
+		submitTextQ: function() {
+			textAnswerInput = this.textAnswerInput;
+		}
 	}
 });
 
@@ -39,8 +41,11 @@ var Question = Vue.extend({
 				1: 'questionMulti',
 				2: 'questionText',
 			},
+			'answers': [],
 			'questionType': false,
-			'currentAnswerType': ''
+			'addQuestionBtn': false,
+			'currentAnswerType': '',
+			'currentId': 1
 		};
 	},
 	methods: {
@@ -48,8 +53,14 @@ var Question = Vue.extend({
 			this.questionType = true;
 		},
 		typeSelected: function(type) {
+			this.answers = [];
+			this.addQuestionBtn = true;
 			console.log(this.questionTypeArr[type]);
-			 this.currentAnswerType = this.questionTypeArr[type];
+			this.currentAnswerType = this.questionTypeArr[type];
+		},
+		addAnswer: function() {
+			this.answers.push({id: this.currentId});
+			this.currentId++;
 		}
 	}
 });
