@@ -3,3 +3,14 @@
 Homestead.yaml
 Homestead.json
 .env
+
+resources/assets/node_modules
+resources/assets/node_modules/*
+
+resources/resources/.sass-cache
+resources/assets/.sass-cache/*
+assets/bower_components/
+*/css/*
+!*/css/vendor/
+*/scripts/*
+!*/scripts/vendor/
