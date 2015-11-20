@@ -11,6 +11,18 @@
 
     <body>
 
+        <header>
+
+            <h1>Quiz</h1>
+
+            @if(Auth::check())
+                <a href="/profile/1">{{Auth::user()->name}}</a>
+            @else
+                <a href="/auth/login">Login</a>
+            @endif
+
+        </header>
+
         <div class="container">
 
             <h1>Shane and Jordan's Quiz</h1>
