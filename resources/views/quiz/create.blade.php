@@ -3,7 +3,7 @@
 @section('content')
 
 <template id="quiz">
-
+	<p>@{{quiz | json}}</p>
 	<div class="question">
 
 		<form>
@@ -11,7 +11,7 @@
 			<label class="question__label">Quiz name</label>
 			<input type="text" class="question__input question__input--quiz-title" v-bind:class="{ 'error': !titleLength }" v-model="quiz.name" v-on:keyup="checkQuizName" />
 	
-			<question v-if='titleLength'></question>
+			<question v-if='titleLength' v-bind:quiz.sync="quiz"></question>
 
 		</form>
 
@@ -32,7 +32,7 @@
 		<button v-on:click.prevent="addAnswer">Add answer</button>
 	</div>
 
-	<component v-for="answer in answers" :is="currentAnswerType">
+	<component v-for="answer in answers" :is="currentAnswerType" v-bind:questions="quiz.questions">
 	 
 	</component>
 

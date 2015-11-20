@@ -14,7 +14,7 @@ var AnswerMulti = Vue.extend({
 
 var AnswerText = Vue.extend({
 	template: '#quiz-answer-input',
-	props: ['quiz'],
+	props: ['questions'],
 	data : function() {
 		return {
 			textAnswerInput: ''
@@ -22,7 +22,12 @@ var AnswerText = Vue.extend({
 	},
 	methods: {
 		submitTextQ: function() {
-			textAnswerInput = this.textAnswerInput;
+			this.questions.push({
+				text: this.textAnswerInput,
+				correct: true,
+				value: 1
+			});
+			console.log(this.questions);
 		}
 	}
 });
@@ -102,7 +107,9 @@ var app = new Vue({
 		quiz: {
 			'name': '',
 			'date': '',
-			'something': ''
+			'something': '',
+			'questions': [
+			]
 		}
 	}
 });
